@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Raj Kitchen - Premium Catering Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HAMBURGER MENU 3-BAR -->
+    <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- SIDE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <h2>Raj Kitchen</h2>
+            <button class="close-menu" id="closeMenu">&times;</button>
+        </div>
+        <nav class="menu-items">
+            <a href="#home" class="menu-item">Home</a>
+            <a href="#about" class="menu-item">About Us</a>
+            <a href="#contact-info" class="menu-item">Contact</a>
+            <a href="#rules" class="menu-item">Terms & Conditions</a>
+        </nav>
+    </div>
+
+    <!-- MENU OVERLAY -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <button class="lang-toggle" id="langToggle">
+            <i class="fas fa-globe"></i> मराठी
+        </button>
+        <h1>Raj Kitchen</h1>
+        <p>Premium Catering Service</p>
+    </div>
+
+    <!-- LOGO SECTION -->
+    <div class="logo-section">
+        <img src="img2.jpeg" alt="Raj Kitchen Logo" class="logo-image">
+        <p class="contact-email"><i class="fas fa-envelope"></i> rajcaterersnagpur@gmail.com</p>
+    </div>
+
+    <!-- DECORATIVE TOP -->
+    <div class="decoration-top">
+        <div class="decoration-item">🍽️</div>
+        <div class="decoration-center">☆ Daily Kitchen Menu ☆</div>
+        <div class="decoration-item">🍲</div>
+    </div>
+
+    <!-- CATEGORY CARDS -->
+    <div class="container">
+        <div class="categories-grid">
+            <div class="category-card" onclick="scrollToCategory('ROTI/PURI')">
+                <div class="card-icon">🍞</div>
+                <div class="card-title">Roti/Puri</div>
+            </div>
+            <div class="category-card" onclick="scrollToCategory('RICE')">
+                <div class="card-icon">🍚</div>
+                <div class="card-title">Rice</div>
+            </div>
+            <div class="category-card" onclick="scrollToCategory('VEGETABLES')">
+                <div class="card-icon">🥗</div>
+                <div class="card-title">Vegetables</div>
+            </div>
+            <div class="category-card" onclick="scrollToCategory('PANEER')">
+                <div class="card-icon">🧀</div>
+                <div class="card-title">Paneer</div>
+            </div>
+            <div class="category-card" onclick="scrollToCategory('NON-VEG (CHICKEN)')">
+                <div class="card-icon">🍗</div>
+                <div class="card-title">Non-Veg</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN MENU CONTAINER -->
+    <div class="container">
+        <div id="menuSection"></div>
+    </div>
+
+    <!-- DECORATIVE BOTTOM -->
+    <div class="decoration-bottom">
+        <div class="decoration-item">🍛</div>
+        <div class="decoration-center">☆ Premium Quality ☆</div>
+        <div class="decoration-item">🥘</div>
+    </div>
+
+    <!-- ORDER SUMMARY AT BOTTOM -->
+    <div class="container">
+        <div class="order-summary-container">
+            <h2>Your Order</h2>
+            <div class="order-items" id="orderItems">
+                <div class="order-empty">
+                    <div class="order-empty-icon">🛒</div>
+                    <p>No items added</p>
+                </div>
+            </div>
+            <div class="order-total">
+                <div class="order-total-label">Total:</div>
+                <div class="order-total-amount" id="orderTotal">₹0</div>
+            </div>
+            <div class="action-buttons">
+                <button class="whatsapp-btn" id="whatsappBtn" disabled>
+                    <i class="fab fa-whatsapp"></i>
+                    Order on WhatsApp
+                </button>
+                <button class="clear-btn" id="clearBtn" style="display:none;">
+                    Clear Order
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/+919370002119" target="_blank" class="floating-whatsapp" title="Message on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- FLOATING CALL BUTTON -->
+    <a href="tel:+919370002119" class="floating-call" title="Call Us">
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <!-- ABOUT SECTION -->
+    <div class="container info-section" id="about">
+        <h2 class="section-heading">About Us</h2>
+        <div class="info-content">
+            <p>Welcome to <strong>Raj Kitchen</strong> - Your trusted catering partner for all occasions. With years of experience in providing premium catering services, we specialize in authentic home-cooked meals prepared with the finest ingredients.</p>
+            <p>Our team of professional chefs is dedicated to delivering exceptional taste and quality in every dish. From intimate gatherings to large celebrations, we ensure every event is memorable with our customized catering solutions.</p>
+        </div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <div class="container info-section" id="contact-info">
+        <h2 class="section-heading">Contact Us</h2>
+        <div class="info-content">
+            <p><strong><i class="fas fa-phone"></i> Phone:</strong> +91 9370002119</p>
+            <p><strong><i class="fas fa-envelope"></i> Email:</strong> rajcaterersnagpur@gmail.com</p>
+            <p><strong><i class="fas fa-map-marker-alt"></i> Location:</strong> Nagpur, Maharashtra</p>
+        </div>
+    </div>
+
+    <!-- RULES & NOTICE SECTION -->
+    <div class="container rules-section" id="rules">
+        <h2 class="section-heading">Terms & Conditions</h2>
+        <div class="rules-content">
+            <ul class="rules-list">
+                <li><strong>Advance Booking:</strong> Orders must be placed <strong>1 day before</strong> the delivery date.</li>
+                <li><strong>Payment Policy:</strong> Payment should be made at the time of booking or delivery.</li>
+                <li><strong>No Cancellation:</strong> <strong>No cancellation allowed</strong> once payment is made and order is confirmed.</li>
+                <li><strong>Modification:</strong> Menu modifications must be requested 24 hours in advance.</li>
+                <li><strong>Delivery:</strong> Delivery charges may apply based on location.</li>
+                <li><strong>Quality Assurance:</strong> We ensure fresh and hygienic food preparation at all times.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MAPS SECTION -->
+    <div class="container maps-section" id="contact">
+        <h2 class="maps-title">Visit Us</h2>
+        <div class="maps-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.7610498015233!2d79.11715281095783!3d21.122090584485104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4b923950db9eb%3A0xe58e48031faef08!2sRAJ&#39;S%20KITCHEN!5e0!3m2!1sen!2sin!4v1769843077457!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="maps-iframe"></iframe>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="script.js"></script>
+</body>
+</html>
