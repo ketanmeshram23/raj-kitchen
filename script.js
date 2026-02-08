@@ -74,8 +74,8 @@ const MENU_DATA = {
         { name: 'Jeera Rice', price: 120, priceDisplay: '₹ 120', nameMR: 'जिरा राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Garlic Rice', price: 130, priceDisplay: '₹ 130', nameMR: 'गार्लिक राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Veg Pulav', price: 160, priceDisplay: '₹ 160', nameMR: 'व्हेज पुलाव', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
-        { name: 'Tawa Pulav', price: 160, priceDisplay: '₹ 160', nameMR: 'तवा पुलाव', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
-        { name: 'Veg Biryani', price: 160, priceDisplay: '₹ 160', nameMR: ' व्हेज बिर्याणी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
+        { name: 'Tawa Pulav', price: 260, priceDisplay: '₹ 260', nameMR: 'तवा पुलाव', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
+        { name: 'Veg Biryani', price: 270, priceDisplay: '₹ 270', nameMR: ' व्हेज बिर्याणी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Masala Bhat', price: 170, priceDisplay: '₹ 170', nameMR: 'मसाला भात', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Moong Dal Khichdi', price: 160, priceDisplay: '₹ 160', nameMR: 'मूंग दाल खिचडी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Toor Dal Khichdi', price: 180, priceDisplay: '₹ 180', nameMR: 'तुवर दाल खिचडी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } }
@@ -101,8 +101,8 @@ const MENU_DATA = {
         { name: 'Dum Aloo', price: 160, priceDisplay: '₹ 160', nameMR: 'दम आलू', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Aloo Gobi Matar', price: 160, priceDisplay: '₹ 160', nameMR: 'आलू गोभी मटर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Veg Anda Curry', price: 190, priceDisplay: '₹ 190', nameMR: 'व्हेज अंडा करी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Veg Kheema Kasturi', price: 310, priceDisplay: '₹ 310', nameMR: 'व्हेज खीमा कस्तूरी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Veg Kheema Kaleji', price: 320, priceDisplay: '₹ 320', nameMR: 'व्हेज खीमा कलेजी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Veg Keema Kasturi', price: 310, priceDisplay: '₹ 310', nameMR: 'व्हेज खीमा कस्तूरी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Veg Keema Kaleji', price: 320, priceDisplay: '₹ 320', nameMR: 'व्हेज खीमा कलेजी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Patwadi Rassa', price: 190, priceDisplay: '₹ 190', nameMR: 'पटवडी रस्सा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Baingan Bharta', price: 190, priceDisplay: '₹ 190', nameMR: 'बैंगन भर्ता', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Zunka', price: 210, priceDisplay: '₹ 210', nameMR: 'जुनका', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
@@ -119,14 +119,19 @@ const MENU_DATA = {
         { name: 'Mutton Saoji', price: 650, priceDisplay: '₹ 650', nameMR: 'मटण सावजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Mutton Masala', price: 700, priceDisplay: '₹ 700', nameMR: 'मटण मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Bhuna Mutton', price: 700, priceDisplay: '₹ 700', nameMR: 'भूना मटण', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
-        { name: 'Sawji Khur', price: 1000, priceDisplay: '₹ 1000', nameMR: 'सावजी खूर', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
-        { name: 'Kheema Kaleji', price: 700, priceDisplay: '₹ 700', nameMR: 'खीमा कलेजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Saoji Khur', price: 1000, priceDisplay: '₹ 1000', nameMR: 'सावजी खूर', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Keema Kaleji', price: 700, priceDisplay: '₹ 700', nameMR: 'खीमा कलेजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Chicken Saoji', price: 450, priceDisplay: '₹ 450', nameMR: 'चिकन सावजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Chicken Masala', price: 500, priceDisplay: '₹ 500', nameMR: 'चिकन मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Butter Chicken', price: 500, priceDisplay: '₹ 500', nameMR: 'बटर चिकन', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Chicken Tikka Masala', price: 500, priceDisplay: '₹ 500', nameMR: 'चिकन टिक्का मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Anda Curry', price: 200, priceDisplay: '₹ 200', nameMR: 'अंडा करी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Anda Masala', price: 250, priceDisplay: '₹ 250', nameMR: 'अंडा मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } }
+    ],
+       'CHINESE': [
+        { name: 'Veg Noodles', price: 270, priceDisplay: '₹ 270', nameMR: 'व्हेज नूडल्स', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '7 kg' } },
+        { name: 'Veg Manchurian', price: 270, priceDisplay: '₹ 270', nameMR: 'व्हेज मंचुरियन', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } }
+        
     ],
     'SNACKS': [
         { name: 'Moong Pakoda', price: 190, priceDisplay: '₹ 190', nameMR: 'मूंग पकोडा', suggestions: { 20: '1 Kg', 40: '3 kg', 50: '4 kg' } },
@@ -139,7 +144,7 @@ const MENU_DATA = {
         { name: 'Fryums Papad', price: 170, priceDisplay: '₹ 170', nameMR: 'फ्राईम्स पापड', suggestions: { 20: '1 Kg', 40: '2 kg', 50: '4 kg' } }
     ],
     'CURD': [ 
-        { name: 'Maharashtrian Kadhi', price: 160, priceDisplay: '₹ 160', nameMR: 'महाराष्ट्रीयन कढी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
+        { name: 'Maharashtrian Kadhi', price: 110, priceDisplay: '₹ 110', nameMR: 'महाराष्ट्रीयन कढी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
         { name: 'Mattha', price: 130, priceDisplay: '₹ 130', nameMR: 'मठ्ठा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Boondi Raita', price: 160, priceDisplay: '₹ 160', nameMR: 'बूंदी रायता', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } }
     ],
@@ -160,12 +165,8 @@ const MENU_DATA = {
         { name: 'Green Salad', price: 180, priceDisplay: '₹ 180', nameMR: 'ग्रीन सलाद', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Dal Chutney', price: 120, priceDisplay: '₹ 120', nameMR: 'दाल चटणी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Thecha', price: 310, priceDisplay: '₹ 310', nameMR: 'ठेचा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
-    ],
-    'CHINESE': [
-        { name: 'Veg Noodles', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज नूडल्स', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '7 kg' } },
-        { name: 'Veg Manchurian', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज मंचुरियन', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
-        { name: 'Veg Cutlet', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज कटलेट', suggestions: { 20: '2 Kg', 40: '4 kg', 50: '5 kg' } }
     ]
+   
 };
 
 const CATEGORY_NAMES = {
@@ -176,11 +177,11 @@ const CATEGORY_NAMES = {
     'VEG SABJI': 'वेज सब्जी',
     'PANEER SPECIAL': 'पनीर स्पेशल',
     'NON-VEG SABJI': 'नॉन-वेज सब्जी',
+    'CHINESE': 'चायनीज',
     'SNACKS': 'नाश्ता',
     'CURD': 'दही',
     'SWEETS': 'मिठाई',
-    'SALADS & CHUTNEYS': 'सलाद & चटणी',
-    'CHINESE': 'चायनीज'
+    'SALADS & CHUTNEYS': 'सलाद & चटणी'
 };
 
 let state = {
