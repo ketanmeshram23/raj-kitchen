@@ -43,7 +43,12 @@
             flex: 1;
         }
 
-        .back-btn {
+        .header-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-toggle, .back-btn {
             background: var(--primary);
             color: white;
             border: none;
@@ -54,9 +59,10 @@
             text-decoration: none;
             display: inline-block;
             transition: background 0.2s;
+            font-size: 0.9rem;
         }
 
-        .back-btn:hover {
+        .lang-toggle:hover, .back-btn:hover {
             background: #1e293b;
         }
 
@@ -254,9 +260,13 @@
                 font-size: 1.25rem;
             }
 
-            .back-btn {
+            .header-buttons {
+                gap: 0.4rem;
+            }
+
+            .lang-toggle, .back-btn {
                 padding: 0.4rem 0.8rem;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .container {
@@ -352,10 +362,15 @@
                 font-size: 1.1rem;
             }
 
-            .back-btn {
+            .header-buttons {
                 width: 100%;
+                gap: 0.3rem;
+            }
+
+            .lang-toggle, .back-btn {
+                flex: 1;
                 padding: 0.5rem;
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
 
             .container {
@@ -466,23 +481,26 @@
 </head>
 <body>
     <header>
-        <h1>Raj Kitchen</h1>
-        <a href="index.html" class="back-btn">← Back to Order</a>
+        <h1 id="headerTitle">Raj Kitchen</h1>
+        <div class="header-buttons">
+            <button class="lang-toggle" id="langToggle" onclick="toggleMenuLanguage()">मराठी</button>
+            <a href="index.html" class="back-btn" id="backBtn">← Back to Order</a>
+        </div>
     </header>
 
     <div class="container">
         <!-- About Section -->
         <div class="menu-section">
-            <h2>About Us</h2>
-            <p>Raj Kitchen is a premium catering service specializing in authentic Indian cuisine for weddings, corporate events, and celebrations.</p>
-            <p>With over 1250+ successful events catered, we pride ourselves on quality, consistency, and customer satisfaction. Our experienced team ensures every event is memorable.</p>
-            <p><strong>सतीश बलराम वासनीक हे Raj’s Kitchen चे संचालक असून त्यांना केटरिंग क्षेत्रात १८ वर्षांचा प्रदीर्घ अनुभव आहे. ग्राहकांच्या नेमक्या गरजा ओळखून त्यांना वाजवी दरात सर्वोत्तम चव आणि उच्च दर्जाची सेवा पुरवणे हीच त्यांची कामाची पद्धत आहे.</strong></p>
+            <h2 id="aboutTitle">About Us</h2>
+            <p id="aboutText1">Raj Kitchen is a premium catering service specializing in authentic Indian cuisine for weddings, corporate events, and celebrations.</p>
+            <p id="aboutText2">With over 1250+ successful events catered, we pride ourselves on quality, consistency, and customer satisfaction. Our experienced team ensures every event is memorable.</p>
+            <p id="aboutText3">सतीश बलराम वासनीक हे Raj's Kitchen चे संचालक असून त्यांना केटरिंग क्षेत्रात १८ वर्षांचा प्रदीर्घ अनुभव आहे. ग्राहकांच्या नेमक्या गरजा ओळखून त्यांना वाजवी दरात सर्वोत्तम चव आणि उच्च दर्जाची सेवा पुरवणे हीच त्यांची कामाची पद्धत आहे.</p>
         </div>
 
         <!-- Services Section -->
         <div class="menu-section">
-            <h2>Services</h2>
-            <ul class="services-list">
+            <h2 id="servicesTitle">Services</h2>
+            <ul class="services-list" id="servicesList">
                 <li>✓ Wedding Catering</li>
                 <li>✓ Corporate Events</li>
                 <li>✓ Birthday Parties</li>
@@ -496,8 +514,8 @@
 
         <!-- Contact Section with Owner Image -->
         <div class="menu-section">
-            <h2>Contact Us</h2>
-            <p>Get in touch with us to discuss your catering needs and place an order.</p>
+            <h2 id="contactTitle">Contact Us</h2>
+            <p id="contactDesc">Get in touch with us to discuss your catering needs and place an order.</p>
             
             <div class="contact-wrapper">
                 <!-- Owner Image (Left Side) -->
@@ -507,17 +525,17 @@
 
                 <!-- Contact Info (Right Side) -->
                 <div class="owner-info">
-                    <h3>Owner: Satish Balram Wasnik </h3>
-                    <p>Founder of Raj Kitchen</p>
+                    <h3 id="ownerName">Owner: Satish Baliram Wasnik </h3>
+                    <p id="ownerTitle">Founder of Raj Kitchen</p>
                     
                     <div class="contact-info">
-                        <p><strong>Phone:</strong></p>
-                        <a href="tel:+919370002119">📞 Call Now</a>
+                        <p id="phoneLabel"><strong>Phone:</strong></p>
+                        <a href="tel:+919370002119" id="callBtn">📞 Call Now</a>
                         
-                        <p style="margin-top: 0.75rem;"><strong>WhatsApp:</strong></p>
-                        <a href="https://wa.me/919370002119">💬 Message on WhatsApp</a>
+                        <p style="margin-top: 0.75rem;" id="whatsappLabel"><strong>WhatsApp:</strong></p>
+                        <a href="https://wa.me/919370002119" id="whatsappBtn">💬 Message on WhatsApp</a>
                         
-                        <p style="margin-top: 0.75rem; font-size: 0.85rem;"><strong>Number:</strong> +91 9370002119</p>
+                        <p style="margin-top: 0.75rem; font-size: 0.85rem;" id="numberDisplay"><strong>Number:</strong> +91 9370002119</p>
                     </div>
                 </div>
             </div>
@@ -525,20 +543,19 @@
 
         <!-- Location Section -->
         <div class="menu-section">
-            <h2>Location</h2>
-            <p>Visit us at Raj's Kitchen - 89, Bhande Plot, Near Shankar Sai Mat, 
-Umred Road, Nagpur-440024.</p>
+            <h2 id="locationTitle">Location</h2>
+            <p id="locationDesc">Visit us at Raj's Kitchen - 89, Bhande Plot, Near Shankar Sai Mat, Umred Road, Nagpur-440024.</p>
             <div class="location-info">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.7610498015233!2d79.11715281095783!3d21.122090584485104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4b923950db9eb%3A0xe58e48031faef08!2sRAJ&#39;S%20KITCHEN!5e0!3m2!1sen!2sin!4v1769843077457!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-light);">For specific location details and delivery confirmation, please call or WhatsApp us.</p>
+            <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-light);" id="locationNote">For specific location details and delivery confirmation, please call or WhatsApp us.</p>
         </div>
 
         <!-- Terms and Conditions Section -->
         <div class="menu-section">
-            <h2>Terms and Conditions</h2>
+            <h2 id="termsTitle">Terms and Conditions</h2>
             
-            <div class="terms-content">
+            <div class="terms-content" id="termsContent">
                 <h3>1. Order Acceptance</h3>
                 <p>जेवण प्लास्टिक फुड कंटेनरमध्ये दिले जाईल, ज्यासाठी कोणतेही अतिरिक्त शुल्क (Extra Cost) आकारले जाणार नाही, परंतु delivery शुल्क वेगळे द्यावे लागेल.</p>
 
@@ -548,27 +565,24 @@ Umred Road, Nagpur-440024.</p>
                 <h3>3. Ordering and Payment</h3>
                 <p>Orders must be placed through our WhatsApp or phone contact. Payment terms will be confirmed at the time of order. We accept cash, bank transfer, and digital payments as per mutual agreement.</p>
 
-    
                 <h3>4. Customization</h3>
                 <p>Special requests for menu customization are subject to availability and may incur additional charges. Customization requests must be communicated clearly at the time of ordering or 24 h before order.</p>
 
                 <h3>5. Cancellation and Refund Policy</h3>
-                <p><strong>No Cancelation ones's the order is confromed</strong></p>
+                <p><strong>No Cancelation once the order is confirmed</strong></p>
 
                 <h3>6. Food Safety and Allergies</h3>
                 <p>We follow strict food safety standards in preparation and delivery. Customers with allergies must inform us in advance. We are not responsible for allergic reactions caused by undisclosed allergies.</p>
 
                 <h3>7. Quality Assurance</h3>
                 <p>We ensure the highest quality of food preparation. If you are unsatisfied with the quality, please inform us within 24 hours of delivery for resolution.</p>
-
-                
             </div>
         </div>
 
         <!-- Gallery Section -->
         <div class="menu-section">
-            <h2>Gallery</h2>
-            <p>Here are some highlights from our past events and catering services.</p>
+            <h2 id="galleryTitle">Gallery</h2>
+            <p id="galleryDesc">Here are some highlights from our past events and catering services.</p>
             <div class="gallery-grid">
                 <div class="gallery-item">🎂 Wedding Events</div>
                 <div class="gallery-item">🏢 Corporate Functions</div>
@@ -581,8 +595,101 @@ Umred Road, Nagpur-440024.</p>
     </div>
 
     <footer>
-        <p>Raj Kitchen - Premium Catering Service</p>
-        <p>All Rights Reserved © 2025</p>
+        <p id="footerText1">Raj Kitchen - Premium Catering Service</p>
+        <p id="footerText2">All Rights Reserved © 2025</p>
     </footer>
+
+    <script>
+        const menuTranslations = {
+            en: {
+                headerTitle: 'Raj Kitchen',
+                aboutTitle: 'About Us',
+                aboutText1: 'Raj Kitchen is a premium catering service specializing in authentic Indian cuisine for weddings, corporate events, and celebrations.',
+                aboutText2: 'With over 1250+ successful events catered, we pride ourselves on quality, consistency, and customer satisfaction. Our experienced team ensures every event is memorable.',
+                aboutText3: 'सतीश बलराम वासनीक हे Raj\'s Kitchen चे संचालक असून त्यांना केटरिंग क्षेत्रात १८ वर्षांचा प्रदीर्घ अनुभव आहे. ग्राहकांच्या नेमक्या गरजा ओळखून त्यांना वाजवी दरात सर्वोत्तम चव आणि उच्च दर्जाची सेवा पुरवणे हीच त्यांची कामाची पद्धत आहे.',
+                servicesTitle: 'Services',
+                contactTitle: 'Contact Us',
+                contactDesc: 'Get in touch with us to discuss your catering needs and place an order.',
+                ownerName: 'Owner: Satish Baliram Wasnik',
+                ownerTitle: 'Founder of Raj Kitchen',
+                phoneLabel: 'Phone:',
+                callBtn: '📞 Call Now',
+                whatsappLabel: 'WhatsApp:',
+                whatsappBtn: '💬 Message on WhatsApp',
+                locationTitle: 'Location',
+                locationDesc: 'Visit us at Raj\'s Kitchen - 89, Bhande Plot, Near Shankar Sai Mat, Umred Road, Nagpur-440024.',
+                locationNote: 'For specific location details and delivery confirmation, please call or WhatsApp us.',
+                termsTitle: 'Terms and Conditions',
+                galleryTitle: 'Gallery',
+                galleryDesc: 'Here are some highlights from our past events and catering services.',
+                footerText1: 'Raj Kitchen - Premium Catering Service',
+                footerText2: 'All Rights Reserved © 2025',
+                backBtn: '← Back to Order',
+                langButton: 'मराठी',
+            },
+            mr: {
+                headerTitle: 'राज किचन',
+                aboutTitle: 'आमच्याबद्दल',
+                aboutText1: 'राज किचन विवाह, कॉर्पोरेट कार्यक्रम आणि उत्सवांसाठी प्रामाणिक भारतीय जेवणात विशेषज्ञता असलेली प्रीमियम केटरिंग सेवा आहे.',
+                aboutText2: '१२५०+ यशस्वी कार्यक्रमांसाठी केटरिंग केल्यानंतर, आम्ही गुणवत्ता, सुसंगतता आणि ग्राहक समाधानाचे गर्व करतो. आमची अनुभवी टीम प्रत्येक कार्यक्रम स्मरणीय बनवते.',
+                aboutText3: 'सतीश बलराम वासनीक हे Raj\'s Kitchen चे संचालक असून त्यांना केटरिंग क्षेत्रात १८ वर्षांचा प्रदीर्घ अनुभव आहे. ग्राहकांच्या नेमक्या गरजा ओळखून त्यांना वाजवी दरात सर्वोत्तम चव आणि उच्च दर्जाची सेवा पुरवणे हीच त्यांची कामाची पद्धत आहे.',
+                servicesTitle: 'सेवाएं',
+                contactTitle: 'आमच्याशी संपर्क करा',
+                contactDesc: 'आपल्या केटरिंग गरजांवर चर्चा करण्यासाठी आणि ऑर्डर ठेवण्यासाठी आमच्याशी संपर्क साधा.',
+                ownerName: 'मालक: सतीश बलराम वासनीक',
+                ownerTitle: 'राज किचनचे संस्थापक',
+                phoneLabel: 'फोन:',
+                callBtn: '📞 आता कॉल करा',
+                whatsappLabel: 'व्हाट्सअ्पवर:',
+                whatsappBtn: '💬 व्हाट्सअ्पवर संदेश पाठवा',
+                locationTitle: 'स्थान',
+                locationDesc: 'राज किचनला भेट द्या - 89, भांडे प्लॉट, शंकर साई मट जवळ, अमरेड रोड, नागपूर-440024.',
+                locationNote: 'विशिष्ट स्थान तपशील आणि वितरण पुष्टीसाठी कृपया आमच्याशी कॉल किंवा व्हाट्सअ्पवर संपर्क साधा.',
+                termsTitle: 'अटी आणि शर्ती',
+                galleryTitle: 'गॅलरी',
+                galleryDesc: 'आमच्या मागील कार्यक्रमांच्या आणि केटरिंग सेवांच्या काही हायलाइट्स येथे आहेत.',
+                footerText1: 'राज किचन - प्रीमियम केटरिंग सेवा',
+                footerText2: 'सर्व अधिकार राखीव © 2025',
+                backBtn: '← ऑर्डर करण्यासाठी परत जा',
+                langButton: 'English',
+            }
+        };
+
+        let menuLanguage = 'en';
+
+        function toggleMenuLanguage() {
+            menuLanguage = menuLanguage === 'en' ? 'mr' : 'en';
+            updateMenuLanguage();
+        }
+
+        function updateMenuLanguage() {
+            const trans = menuTranslations[menuLanguage];
+            
+            document.getElementById('headerTitle').textContent = trans.headerTitle;
+            document.getElementById('aboutTitle').textContent = trans.aboutTitle;
+            document.getElementById('aboutText1').textContent = trans.aboutText1;
+            document.getElementById('aboutText2').textContent = trans.aboutText2;
+            document.getElementById('aboutText3').textContent = trans.aboutText3;
+            document.getElementById('servicesTitle').textContent = trans.servicesTitle;
+            document.getElementById('contactTitle').textContent = trans.contactTitle;
+            document.getElementById('contactDesc').textContent = trans.contactDesc;
+            document.getElementById('ownerName').textContent = trans.ownerName;
+            document.getElementById('ownerTitle').textContent = trans.ownerTitle;
+            document.getElementById('phoneLabel').innerHTML = '<strong>' + trans.phoneLabel + '</strong>';
+            document.getElementById('callBtn').textContent = trans.callBtn;
+            document.getElementById('whatsappLabel').innerHTML = '<strong>' + trans.whatsappLabel + '</strong>';
+            document.getElementById('whatsappBtn').textContent = trans.whatsappBtn;
+            document.getElementById('locationTitle').textContent = trans.locationTitle;
+            document.getElementById('locationDesc').textContent = trans.locationDesc;
+            document.getElementById('locationNote').textContent = trans.locationNote;
+            document.getElementById('termsTitle').textContent = trans.termsTitle;
+            document.getElementById('galleryTitle').textContent = trans.galleryTitle;
+            document.getElementById('galleryDesc').textContent = trans.galleryDesc;
+            document.getElementById('footerText1').textContent = trans.footerText1;
+            document.getElementById('footerText2').textContent = trans.footerText2;
+            document.getElementById('backBtn').textContent = trans.backBtn;
+            document.getElementById('langToggle').textContent = trans.langButton;
+        }
+    </script>
 </body>
 </html>

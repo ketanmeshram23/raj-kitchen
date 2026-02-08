@@ -3,19 +3,57 @@ const WHATSAPP_NUMBER = '919370002119';
 const translations = {
     en: {
         peopleText: 'How many people are you catering for?',
-        badge1: '1250+ Events',
-        badge2: 'Trusted Partner',
-        badge3: 'Nagpur, Maharashtra',
+        people20: '20 People',
+        people40: '40 People',
+        people50: '50 People',
+        recommendedFor: 'Recommended for',
+        people: 'people:',
+        addToOrder: 'Add to Order',
+        remove: 'Remove',
+        emptyCart: 'Select items to get started →',
+        items: 'items',
+        item: 'item',
+        viewCart: 'View Cart',
+        orderOnWhatsApp: 'Order on WhatsApp •',
+        callToConfirm: '📞 Call to Confirm',
+        pleaseAddItems: 'Please add items to your order',
+        rajKitchenOrder: 'Raj Kitchen Order',
+        confirmAvailability: 'Please confirm availability and delivery.',
+        total: 'Total',
         langButton: 'मराठी',
     },
     mr: {
         peopleText: 'तुम किती लोकांसाठी अन्न सिद्ध करत आहात?',
-        badge1: '1250+ कार्यक्रम',
-        badge2: 'विश्वस्त भागीदार',
-        badge3: 'नागपूर, महाराष्ट्र',
+        people20: '20 लोक',
+        people40: '40 लोक',
+        people50: '50 लोक',
+        recommendedFor: 'या',
+        people: 'लोकांसाठी शिफारस:',
+        addToOrder: 'ऑर्डरमध्ये जोडा',
+        remove: 'काढून टाका',
+        emptyCart: 'सुरू करण्यासाठी आयटम निवडा →',
+        items: 'आयटम',
+        item: 'आयटम',
+        viewCart: 'कार्ट पहा',
+        orderOnWhatsApp: 'व्हाट्सअ्पवर ऑर्डर करा •',
+        callToConfirm: '📞 खरोखर करण्यासाठी कॉल करा',
+        pleaseAddItems: 'कृपया आपल्या ऑर्डरमध्ये आयटम जोडा',
+        rajKitchenOrder: 'राज किचन ऑर्डर',
+        confirmAvailability: 'कृपया उपलब्धता आणि वितरण खरोखर करा.',
+        total: 'एकूण',
         langButton: 'English',
     }
 };
+
+function formatPriceDisplay(priceDisplay) {
+    if (priceDisplay.includes('/ piece')) {
+        return priceDisplay;
+    }
+    if (!priceDisplay.includes('/kg')) {
+        return priceDisplay + ' /kg';
+    }
+    return priceDisplay;
+}
 
 const MENU_DATA = {
     'ROTI / BREAD': [
@@ -39,10 +77,10 @@ const MENU_DATA = {
         { name: 'Dal Tadka', price: 160, priceDisplay: '₹ 160', nameMR: 'दाल तडका', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Dal Palak', price: 170, priceDisplay: '₹ 170', nameMR: 'दाल पालक', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ],
-    'VEG CURRIES': [
+    'VEG SABJI': [
         { name: 'Mix Veg Kolhapuri', price: 170, priceDisplay: '₹ 170', nameMR: 'मिक्स व्हेज कोल्हापुरी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Bhendi Masala', price: 210, priceDisplay: '₹ 210', nameMR: 'भेंडी मसाला', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Fanus Curry (Seasonal)', price: 210, priceDisplay: '₹ 210', nameMR: 'फणस करी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Fanus Curry (Seasonal)', price: 210, priceDisplay: '₹ 210', nameMR: 'फणस करी (ऋतुनुसार)', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Methi Matar Malai', price: 310, priceDisplay: '₹ 310', nameMR: 'मेथी मटर मलाई', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Veg Kofta Curry', price: 300, priceDisplay: '₹ 300', nameMR: 'व्हेज कोफता करी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Malai Kofta', price: 310, priceDisplay: '₹ 310', nameMR: 'मलाई कोफता', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
@@ -60,7 +98,7 @@ const MENU_DATA = {
         { name: 'Baingan Bharta', price: 190, priceDisplay: '₹ 190', nameMR: 'बैंगन भर्ता', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Zunka', price: 210, priceDisplay: '₹ 210', nameMR: 'जुनका', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ],
-    'PANEER ITEMS': [
+    'PANEER SPECIAL': [
         { name: 'Paneer Butter Masala', price: 330, priceDisplay: '₹ 330', nameMR: 'पनीर बटर मसाला', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Matar Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'मटर पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Kadhai Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'कढाई पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
@@ -68,7 +106,7 @@ const MENU_DATA = {
         { name: 'Lacha Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'लच्छा पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Paneer Kolhapuri', price: 400, priceDisplay: '₹ 400', nameMR: 'पनीर कोल्हापुरी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ],
-    'NON-VEG ITEMS': [
+    'NON-VEG SABJI': [
         { name: 'Mutton Sawji', price: 650, priceDisplay: '₹ 650', nameMR: 'मटण सावजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Mutton Masala', price: 700, priceDisplay: '₹ 700', nameMR: 'मटण मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Bhuna Mutton', price: 700, priceDisplay: '₹ 700', nameMR: 'भूना मटण', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
@@ -82,8 +120,6 @@ const MENU_DATA = {
         { name: 'Anda Masala', price: 250, priceDisplay: '₹ 250', nameMR: 'अंडा मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } }
     ],
     'SNACKS': [
-        { name: 'Mattha', price: 130, priceDisplay: '₹ 130', nameMR: 'मठ्ठा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Boondi Raita', price: 160, priceDisplay: '₹ 160', nameMR: 'बूंदी रायता', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
         { name: 'Moong Pakoda', price: 190, priceDisplay: '₹ 190', nameMR: 'मूंग पकोडा', suggestions: { 20: '1 Kg', 40: '3 kg', 50: '4 kg' } },
         { name: 'Kande Bhaje', price: 170, priceDisplay: '₹ 170', nameMR: 'कांदे भाजे', suggestions: { 20: '1 Kg', 40: '3 kg', 50: '4 kg' } },
         { name: 'Mirchi Bhaje', price: 180, priceDisplay: '₹ 180', nameMR: 'मिरची भाजे', suggestions: { 20: '1 Kg', 40: '3 kg', 50: '4 kg' } },
@@ -93,7 +129,10 @@ const MENU_DATA = {
         { name: 'Sambar Vadi', price: 300, priceDisplay: '₹ 300', nameMR: 'संभार वडी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Fryums Papad', price: 170, priceDisplay: '₹ 170', nameMR: 'फ्राईम्स पापड', suggestions: { 20: '1 Kg', 40: '2 kg', 50: '4 kg' } }
     ],
-    'DESSERTS': [
+    'SWEETS': [
+        { name: 'Gulab Jamun', price: 8, priceDisplay: '₹ 8 / piece', nameMR: 'गुलाब जामून', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } },
+        { name: 'Cham Cham', price: 8, priceDisplay: '₹ 8 / piece', nameMR: 'चम चम', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } },
+        { name: 'Rasgulla', price: 8, priceDisplay: '₹ 8 / piece', nameMR: 'रसगुल्ला', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } },
         { name: 'Moong Dal Halwa', price: 360, priceDisplay: '₹ 360', nameMR: 'मूंग दाल हलवा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Shrikhand', price: 260, priceDisplay: '₹ 260', nameMR: 'श्रीखंड', suggestions: { 20: '2 Kg', 40: '4 kg', 50: '5 kg' } },
         { name: 'Kheer', price: 260, priceDisplay: '₹ 260', nameMR: 'खीर', suggestions: { 20: '2 Kg', 40: '3 kg', 50: '5 kg' } },
@@ -102,10 +141,10 @@ const MENU_DATA = {
         { name: 'Puran Poli', price: 240, priceDisplay: '₹ 240', nameMR: 'पूरण पोळी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Khova Poli', price: 340, priceDisplay: '₹ 340', nameMR: 'खोवा पोळी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ],
-    'SWEETS (PIECE-BASED)': [
-        { name: 'Gulab Jamun', price: 8, priceDisplay: '₹ 8 / piece', nameMR: 'गुलाब जामून', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } },
-        { name: 'Cham Cham', price: 8, priceDisplay: '₹ 8 / piece', nameMR: 'चम चम', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } },
-        { name: 'Rasgulla', price: 8, priceDisplay: '₹ 8 / piece', nameMR: 'रसगुल्ला', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } }
+    'CURD': [ 
+        { name: 'Maharashtrian Kadhi', price: 160, priceDisplay: '₹ 160', nameMR: 'महाराष्ट्रीयन कढी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
+        { name: 'Mattha', price: 130, priceDisplay: '₹ 130', nameMR: 'मठ्ठा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Boondi Raita', price: 160, priceDisplay: '₹ 160', nameMR: 'बूंदी रायता', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } }
     ],
     'SALADS & CHUTNEYS': [
         { name: 'Koshimbir', price: 160, priceDisplay: '₹ 160', nameMR: 'कोशिंबीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
@@ -113,7 +152,7 @@ const MENU_DATA = {
         { name: 'Dal Chutney', price: 120, priceDisplay: '₹ 120', nameMR: 'दाल चटणी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Thecha', price: 310, priceDisplay: '₹ 310', nameMR: 'ठेचा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ],
-    'CHINESE ITEMS': [
+    'CHINESE': [
         { name: 'Veg Noodles', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज नूडल्स', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '7 kg' } },
         { name: 'Veg Manchurian', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज मंचुरियन', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
         { name: 'Veg Cutlet', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज कटलेट', suggestions: { 20: '2 Kg', 40: '4 kg', 50: '5 kg' } },
@@ -125,6 +164,20 @@ const MENU_DATA = {
     ]
 };
 
+const CATEGORY_NAMES = {
+    'ROTI / BREAD': 'रोटी / ब्रेड',
+    'RICE': 'भात',
+    'DAL': 'डाळ',
+    'VEG SABJI': 'वेज सब्जी',
+    'PANEER SPECIAL': 'पनीर स्पेशल',
+    'NON-VEG SABJI': 'नॉन-वेज सब्जी',
+    'SNACKS': 'नाश्ता',
+    'SWEETS': 'मिठाई',
+    'CURD': 'दही',
+    'SALADS & CHUTNEYS': 'सलाद & चटणी',
+    'CHINESE': 'चायनीज'
+};
+
 let state = {
     cart: {},
     language: 'en',
@@ -133,8 +186,16 @@ let state = {
     cartVisible: false
 };
 
+function getTrans(key) {
+    return translations[state.language][key] || translations['en'][key];
+}
+
 function getItemName(item) {
     return state.language === 'mr' ? item.nameMR : item.name;
+}
+
+function getCategoryName(category) {
+    return state.language === 'mr' ? CATEGORY_NAMES[category] : category;
 }
 
 function parseQuantity(suggestion) {
@@ -146,10 +207,41 @@ function formatPrice(amount) {
     return amount.toLocaleString('en-IN');
 }
 
+function updateAllHTMLText() {
+    // Update all static HTML text
+    document.getElementById('langToggle').textContent = getTrans('langButton');
+    document.getElementById('peopleText').textContent = getTrans('peopleText');
+    document.getElementById('emptyCart').textContent = getTrans('emptyCart');
+    
+    // Update people buttons
+    const peopleBtns = document.querySelectorAll('.people-btn');
+    peopleBtns[0].textContent = getTrans('people20');
+    peopleBtns[1].textContent = getTrans('people40');
+    peopleBtns[2].textContent = getTrans('people50');
+    
+    // Update view cart button
+    const viewCartBtn = document.querySelector('.view-cart-btn');
+    if (viewCartBtn) {
+        viewCartBtn.textContent = getTrans('viewCart');
+    }
+    
+    // Update call button
+    const callBtn = document.getElementById('callBtn');
+    if (callBtn) {
+        callBtn.textContent = getTrans('callToConfirm');
+    }
+    
+    // Update whatsapp button
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    if (whatsappBtn) {
+        whatsappBtn.innerHTML = `${getTrans('orderOnWhatsApp')} <span id="whatsappTotal">₹0</span>`;
+    }
+}
+
 function init() {
+    updateAllHTMLText();
     renderCategoryTabs();
     renderMenuItems(state.activeCategory);
-    updateLanguageUI();
     updateCartUI();
 }
 
@@ -160,7 +252,7 @@ function renderCategoryTabs() {
     Object.keys(MENU_DATA).forEach(category => {
         const tab = document.createElement('button');
         tab.className = `category-tab ${category === state.activeCategory ? 'active' : ''}`;
-        tab.textContent = category;
+        tab.textContent = getCategoryName(category);
         tab.onclick = () => selectCategory(category);
         categoryTabs.appendChild(tab);
     });
@@ -172,7 +264,7 @@ function renderMenuItems(category) {
 
     const items = MENU_DATA[category];
 
-    items.forEach((item, index) => {
+    items.forEach((item) => {
         const cartKey = `${category}|${item.name}`;
         const cartItem = state.cart[cartKey];
         const suggestion = item.suggestions[state.selectedPeople];
@@ -186,11 +278,11 @@ function renderMenuItems(category) {
 
         const itemPriceEl = document.createElement('div');
         itemPriceEl.className = 'item-price';
-        itemPriceEl.textContent = item.priceDisplay;
+        itemPriceEl.textContent = formatPriceDisplay(item.priceDisplay);
 
         const recommendationEl = document.createElement('div');
         recommendationEl.className = 'recommendation';
-        recommendationEl.innerHTML = `<strong>Recommended for ${state.selectedPeople} people:</strong>${suggestion}`;
+        recommendationEl.innerHTML = `<strong>${getTrans('recommendedFor')} ${state.selectedPeople} ${getTrans('people')}</strong>${suggestion}`;
 
         itemEl.appendChild(itemNameEl);
         itemEl.appendChild(itemPriceEl);
@@ -229,7 +321,7 @@ function renderMenuItems(category) {
         } else {
             const addBtn = document.createElement('button');
             addBtn.className = 'add-btn';
-            addBtn.textContent = 'Add to Order';
+            addBtn.textContent = getTrans('addToOrder');
             addBtn.onclick = () => addToCart(item, category);
             itemEl.appendChild(addBtn);
         }
@@ -250,7 +342,8 @@ function updateCartUI() {
         cartBar.classList.add('active');
         emptyCart.classList.remove('active');
 
-        document.getElementById('cartCount').textContent = `${totalItems} item${totalItems !== 1 ? 's' : ''}`;
+        const itemText = totalItems !== 1 ? getTrans('items') : getTrans('item');
+        document.getElementById('cartCount').textContent = `${totalItems} ${itemText}`;
         document.getElementById('cartTotal').textContent = `₹${formatPrice(totalPrice)}`;
         document.getElementById('whatsappTotal').textContent = `₹${formatPrice(totalPrice)}`;
 
@@ -275,7 +368,7 @@ function updateCartUI() {
 
             const removeBtn = document.createElement('button');
             removeBtn.className = 'cart-item-remove';
-            removeBtn.textContent = 'Remove';
+            removeBtn.textContent = getTrans('remove');
             removeBtn.onclick = () => removeFromCart(key);
 
             cartItemEl.appendChild(itemInfoEl);
@@ -285,16 +378,8 @@ function updateCartUI() {
     } else {
         cartBar.classList.remove('active');
         emptyCart.classList.add('active');
+        emptyCart.textContent = getTrans('emptyCart');
     }
-}
-
-function updateLanguageUI() {
-    const langText = state.language === 'en' ? 'mr' : 'en';
-    document.getElementById('langToggle').textContent = translations[langText].langButton;
-    document.getElementById('peopleText').textContent = translations[state.language].peopleText;
-    document.getElementById('badge1').textContent = translations[state.language].badge1;
-    document.getElementById('badge2').textContent = translations[state.language].badge2;
-    document.getElementById('badge3').textContent = translations[state.language].badge3;
 }
 
 function addToCart(item, category) {
@@ -333,14 +418,11 @@ function setPeople(count) {
     state.selectedPeople = count;
 
     document.querySelectorAll('.people-btn').forEach(btn => {
-        btn.classList.remove('active');
-        btn.classList.add('inactive');
+        btn.classList.remove('active', 'inactive');
     });
-    event.target.classList.remove('inactive');
     event.target.classList.add('active');
 
     renderMenuItems(state.activeCategory);
-    updateCartUI();
 }
 
 function selectCategory(category) {
@@ -351,18 +433,20 @@ function selectCategory(category) {
 
 function toggleLanguage() {
     state.language = state.language === 'en' ? 'mr' : 'en';
-    updateLanguageUI();
+    updateAllHTMLText();
+    renderCategoryTabs();
     renderMenuItems(state.activeCategory);
     updateCartUI();
 }
 
 function toggleMenu() {
+    // This can navigate to a menu page or show a sidebar menu
+    // For now, it reloads the current page or you can change the URL
     window.location.href = 'menu.html';
 }
 
 function handleCall() {
-    const phoneNumber = '919370002119';
-    window.location.href = `tel:${phoneNumber}`;
+    window.location.href = `tel:${WHATSAPP_NUMBER}`;
 }
 
 function toggleCart() {
@@ -372,21 +456,22 @@ function toggleCart() {
 
     if (state.cartVisible) {
         cartSummary.classList.add('active');
-        expandBtn.classList.add('expanded');
+        expandBtn.textContent = '▲';
     } else {
         cartSummary.classList.remove('active');
-        expandBtn.classList.remove('expanded');
+        expandBtn.textContent = '▼';
     }
 }
 
-function generateWhatsAppMessage() {
+function handleWhatsAppOrder() {
     const cartItems = Object.entries(state.cart);
 
     if (cartItems.length === 0) {
-        return '';
+        alert(getTrans('pleaseAddItems'));
+        return;
     }
 
-    let message = 'Raj Kitchen Order\n\n';
+    let message = getTrans('rajKitchenOrder') + '\n\n';
     let total = 0;
 
     cartItems.forEach(([_, item]) => {
@@ -397,24 +482,11 @@ function generateWhatsAppMessage() {
         message += `• ${displayName}\n  ${item.quantity} ${unit} × ₹${item.price} = ₹${itemTotal}\n\n`;
     });
 
-    message += `Total: ₹${total}\n\n`;
-    message += 'Please confirm availability and delivery.';
+    message += `${getTrans('total')}: ₹${total}\n\n`;
+    message += getTrans('confirmAvailability');
 
-    return message;
-}
-
-function handleWhatsAppOrder() {
-    const cartItems = Object.entries(state.cart);
-
-    if (cartItems.length === 0) {
-        alert('Please add items to your order');
-        return;
-    }
-
-    const message = generateWhatsAppMessage();
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-
     window.open(whatsappURL, '_blank');
 }
 
