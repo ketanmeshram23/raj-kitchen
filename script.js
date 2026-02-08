@@ -1,393 +1,421 @@
-// =============================================
-// RAJ KITCHEN - COMPLETE JAVASCRIPT
-// Combined Menu Data + Script Functionality
-// =============================================
+const WHATSAPP_NUMBER = '919370002119';
 
-// =============================================
-// MENU CATEGORIES AND ITEMS
-// =============================================
-const categories = {
-    'ROTI/PURI': [
-        { name: 'तेलाची मोठी पोळी', price: 150, priceDisplay: '₹ 150', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'फुलका रोटी', price: 160, priceDisplay: '₹ 160', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'अजवाइन पुरी', price: 180, priceDisplay: '₹ 180', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'ज्वारी भाकर', price: 190, priceDisplay: '₹ 190', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } }
+const translations = {
+    en: {
+        peopleText: 'How many people are you catering for?',
+        badge1: '1250+ Events',
+        badge2: 'Trusted Partner',
+        badge3: 'Nagpur, Maharashtra',
+        langButton: 'मराठी',
+    },
+    mr: {
+        peopleText: 'तुम किती लोकांसाठी अन्न सिद्ध करत आहात?',
+        badge1: '1250+ कार्यक्रम',
+        badge2: 'विश्वस्त भागीदार',
+        badge3: 'नागपूर, महाराष्ट्र',
+        langButton: 'English',
+    }
+};
+
+const MENU_DATA = {
+    'ROTI / BREAD': [
+        { name: 'Telachi Mothi Poli', price: 150, priceDisplay: '₹ 150', nameMR: 'तेलाची मोठी पोळी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Fulka Roti', price: 160, priceDisplay: '₹ 160', nameMR: 'फुलका रोटी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Ajwain Puri', price: 180, priceDisplay: '₹ 180', nameMR: 'अजवाइन पुरी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Jowar Bhakri', price: 190, priceDisplay: '₹ 190', nameMR: 'ज्वारी भाकर', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } }
     ],
     'RICE': [
-        { name: 'साधा राईस', price: 110, priceDisplay: '₹ 110', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
-        { name: 'जिरा राईस', price: 120, priceDisplay: '₹ 120', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
-        { name: 'गार्लिक राईस', price: 130, priceDisplay: '₹ 130', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
-        { name: 'व्हेज पुलाव', price: 160, priceDisplay: '₹ 160', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
-        { name: 'मसाला भात', price: 170, priceDisplay: '₹ 170', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
-        { name: 'मूंग दाल खिचडी', price: 160, priceDisplay: '₹ 160', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
-        { name: 'तुवर दाल खिचडी', price: 180, priceDisplay: '₹ 180', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } }
+        { name: 'Sada Rice', price: 110, priceDisplay: '₹ 110', nameMR: 'साधा राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
+        { name: 'Jeera Rice', price: 120, priceDisplay: '₹ 120', nameMR: 'जिरा राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
+        { name: 'Garlic Rice', price: 130, priceDisplay: '₹ 130', nameMR: 'गार्लिक राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
+        { name: 'Veg Pulav', price: 160, priceDisplay: '₹ 160', nameMR: 'व्हेज पुलाव', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
+        { name: 'Masala Bhat', price: 170, priceDisplay: '₹ 170', nameMR: 'मसाला भात', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
+        { name: 'Moong Dal Khichdi', price: 160, priceDisplay: '₹ 160', nameMR: 'मूंग दाल खिचडी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
+        { name: 'Toor Dal Khichdi', price: 180, priceDisplay: '₹ 180', nameMR: 'तुवर दाल खिचडी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } }
     ],
     'DAL': [
-        { name: 'साधी दाल', price: 160, priceDisplay: '₹ 160', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'जिरा दाल', price: 160, priceDisplay: '₹ 160', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'दाल तडका', price: 160, priceDisplay: '₹ 160', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'दाल पालक', price: 170, priceDisplay: '₹ 170', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
+        { name: 'Sadi Dal', price: 160, priceDisplay: '₹ 160', nameMR: 'साधी दाल', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Jeera Dal', price: 160, priceDisplay: '₹ 160', nameMR: 'जिरा दाल', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Dal Tadka', price: 160, priceDisplay: '₹ 160', nameMR: 'दाल तडका', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Dal Palak', price: 170, priceDisplay: '₹ 170', nameMR: 'दाल पालक', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ],
-    'SWEETS (PER PIECE)': [
-        { name: 'गुलाबजामून', price: 8, priceDisplay: '₹ 8 / piece', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } },
-        { name: 'चम चम', price: 8, priceDisplay: '₹ 8 / piece', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } },
-        { name: 'रसगुल्ला', price: 8, priceDisplay: '₹ 8 / piece', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } }
+    'VEG CURRIES': [
+        { name: 'Mix Veg Kolhapuri', price: 170, priceDisplay: '₹ 170', nameMR: 'मिक्स व्हेज कोल्हापुरी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Bhendi Masala', price: 210, priceDisplay: '₹ 210', nameMR: 'भेंडी मसाला', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Fanus Curry (Seasonal)', price: 210, priceDisplay: '₹ 210', nameMR: 'फणस करी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Methi Matar Malai', price: 310, priceDisplay: '₹ 310', nameMR: 'मेथी मटर मलाई', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Veg Kofta Curry', price: 300, priceDisplay: '₹ 300', nameMR: 'व्हेज कोफता करी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Malai Kofta', price: 310, priceDisplay: '₹ 310', nameMR: 'मलाई कोफता', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Chole Masala', price: 170, priceDisplay: '₹ 170', nameMR: 'छोले मसाला', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Aloo Chole', price: 170, priceDisplay: '₹ 170', nameMR: 'आलू छोले', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Dal Kanda', price: 190, priceDisplay: '₹ 190', nameMR: 'दाल कांडा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Aloo Baingan', price: 160, priceDisplay: '₹ 160', nameMR: 'आलू बैंगन', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Baingan Masala', price: 160, priceDisplay: '₹ 160', nameMR: 'बैंगन मसाला', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Dum Aloo', price: 160, priceDisplay: '₹ 160', nameMR: 'दम आलू', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Aloo Gobi Matar', price: 160, priceDisplay: '₹ 160', nameMR: 'आलू गोभी मटर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Veg Anda Curry', price: 190, priceDisplay: '₹ 190', nameMR: 'व्हेज अंडा करी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Veg Kheema Kasturi', price: 310, priceDisplay: '₹ 310', nameMR: 'व्हेज खीमा कस्तूरी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Veg Kheema Kaleji', price: 320, priceDisplay: '₹ 320', nameMR: 'व्हेज खीमा कलेजी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Patwadi Rassa', price: 190, priceDisplay: '₹ 190', nameMR: 'पटवडी रस्सा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Baingan Bharta', price: 190, priceDisplay: '₹ 190', nameMR: 'बैंगन भर्ता', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Zunka', price: 210, priceDisplay: '₹ 210', nameMR: 'जुनका', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ],
-    'VEGETABLES': [
-        { name: 'कोशिंबीर', price: 160, priceDisplay: '₹ 160', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'ग्रीन सलाद', price: 180, priceDisplay: '₹ 180', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'दाल चटणी', price: 120, priceDisplay: '₹ 120', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'ठेचा', price: 310, priceDisplay: '₹ 310', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'व्हेज नूडल्स', price: 260, priceDisplay: '₹ 260', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '7 kg' } },
-        { name: 'व्हेज मंचुरियन', price: 260, priceDisplay: '₹ 260', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
-        { name: 'व्हेज कटलेट', price: 260, priceDisplay: '₹ 260', suggestions: { 20: '2 Kg', 40: '4 kg', 50: '5 kg' } },
-        { name: 'मिक्स व्हेज कोल्हापुरी', price: 170, priceDisplay: '₹ 170', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'भेंडी मसाला', price: 210, priceDisplay: '₹ 210', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
+    'PANEER ITEMS': [
+        { name: 'Paneer Butter Masala', price: 330, priceDisplay: '₹ 330', nameMR: 'पनीर बटर मसाला', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Matar Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'मटर पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Kadhai Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'कढाई पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Palak Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'पालक पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Lacha Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'लच्छा पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Paneer Kolhapuri', price: 400, priceDisplay: '₹ 400', nameMR: 'पनीर कोल्हापुरी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ],
-    'PANEER': [
-        { name: 'पनीर बटर मसाला', price: 330, priceDisplay: '₹ 330', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'मटर पनीर', price: 330, priceDisplay: '₹ 330', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'कढाई पनीर', price: 330, priceDisplay: '₹ 330', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'पालक पनीर', price: 330, priceDisplay: '₹ 330', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'लच्छा पनीर', price: 330, priceDisplay: '₹ 330', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'पनीर कोल्हापुरी', price: 400, priceDisplay: '₹ 400', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
+    'NON-VEG ITEMS': [
+        { name: 'Mutton Sawji', price: 650, priceDisplay: '₹ 650', nameMR: 'मटण सावजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Mutton Masala', price: 700, priceDisplay: '₹ 700', nameMR: 'मटण मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Bhuna Mutton', price: 700, priceDisplay: '₹ 700', nameMR: 'भूना मटण', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Sawji Khur', price: 1000, priceDisplay: '₹ 1000', nameMR: 'सावजी खूर', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Kheema Kaleji', price: 700, priceDisplay: '₹ 700', nameMR: 'खीमा कलेजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Chicken Sawji', price: 450, priceDisplay: '₹ 450', nameMR: 'चिकन सावजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Chicken Masala', price: 500, priceDisplay: '₹ 500', nameMR: 'चिकन मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Butter Chicken', price: 500, priceDisplay: '₹ 500', nameMR: 'बटर चिकन', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Chicken Tikka Masala', price: 500, priceDisplay: '₹ 500', nameMR: 'चिकन टिक्का मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Anda Curry', price: 200, priceDisplay: '₹ 200', nameMR: 'अंडा करी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Anda Masala', price: 250, priceDisplay: '₹ 250', nameMR: 'अंडा मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } }
     ],
-    'NON-VEG (MUTTON)': [
-        { name: 'मटण सावजी', price: 650, priceDisplay: '₹ 650', suggestions: { 20: '8 Kg', 40: '15 Kg', 50: '20 Kg' } },
-        { name: 'मटण मसाला', price: 700, priceDisplay: '₹ 700', suggestions: { 20: '8 Kg', 40: '15 Kg', 50: '20 Kg' } },
-        { name: 'भूना मटण', price: 700, priceDisplay: '₹ 700', suggestions: { 20: '8 Kg', 40: '15 Kg', 50: '20 Kg' } },
-        { name: 'सावजी खूर', price: 1000, priceDisplay: '₹ 1000', suggestions: { 20: '8 Kg', 40: '15 Kg', 50: '20 Kg' } },
-        { name: 'खिमा कलेजी', price: 700, priceDisplay: '₹ 700', suggestions: { 20: '8 Kg', 40: '15 Kg', 50: '20 Kg' } }
+    'SNACKS': [
+        { name: 'Mattha', price: 130, priceDisplay: '₹ 130', nameMR: 'मठ्ठा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Boondi Raita', price: 160, priceDisplay: '₹ 160', nameMR: 'बूंदी रायता', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
+        { name: 'Moong Pakoda', price: 190, priceDisplay: '₹ 190', nameMR: 'मूंग पकोडा', suggestions: { 20: '1 Kg', 40: '3 kg', 50: '4 kg' } },
+        { name: 'Kande Bhaje', price: 170, priceDisplay: '₹ 170', nameMR: 'कांदे भाजे', suggestions: { 20: '1 Kg', 40: '3 kg', 50: '4 kg' } },
+        { name: 'Mirchi Bhaje', price: 180, priceDisplay: '₹ 180', nameMR: 'मिरची भाजे', suggestions: { 20: '1 Kg', 40: '3 kg', 50: '4 kg' } },
+        { name: 'Dahi Vada', price: 230, priceDisplay: '₹ 230', nameMR: 'दही वडा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Aloo Bonda', price: 260, priceDisplay: '₹ 260', nameMR: 'आलू बोंडा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Cutlet', price: 270, priceDisplay: '₹ 270', nameMR: 'कटलेट', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Sambar Vadi', price: 300, priceDisplay: '₹ 300', nameMR: 'संभार वडी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Fryums Papad', price: 170, priceDisplay: '₹ 170', nameMR: 'फ्राईम्स पापड', suggestions: { 20: '1 Kg', 40: '2 kg', 50: '4 kg' } }
     ],
-    'NON-VEG (CHICKEN)': [
-        { name: 'चिकन सावजी', price: 450, priceDisplay: '₹ 450', suggestions: { 20: '8 Kg', 40: '15 Kg', 50: '20 Kg' } },
-        { name: 'चिकन मसाला', price: 500, priceDisplay: '₹ 500', suggestions: { 20: '8 Kg', 40: '15 Kg', 50: '20 Kg' } },
-        { name: 'बटर चिकन', price: 500, priceDisplay: '₹ 500', suggestions: { 20: '8 Kg', 40: '15 Kg', 50: '20 Kg' } },
-        { name: 'चिकन टिक्का मसाला', price: 500, priceDisplay: '₹ 500', suggestions: { 20: '8 Kg', 40: '15 Kg', 50: '20 Kg' } }
+    'DESSERTS': [
+        { name: 'Moong Dal Halwa', price: 360, priceDisplay: '₹ 360', nameMR: 'मूंग दाल हलवा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Shrikhand', price: 260, priceDisplay: '₹ 260', nameMR: 'श्रीखंड', suggestions: { 20: '2 Kg', 40: '4 kg', 50: '5 kg' } },
+        { name: 'Kheer', price: 260, priceDisplay: '₹ 260', nameMR: 'खीर', suggestions: { 20: '2 Kg', 40: '3 kg', 50: '5 kg' } },
+        { name: 'Motichur Ladoo', price: 360, priceDisplay: '₹ 360', nameMR: 'मोतीचूर लाडू', suggestions: { 20: '2 Kg', 40: '3 kg', 50: '5 kg' } },
+        { name: 'Besan Barfi', price: 280, priceDisplay: '₹ 280', nameMR: 'बेसन बर्फी', suggestions: { 20: '2 Kg', 40: '3 kg', 50: '5 kg' } },
+        { name: 'Puran Poli', price: 240, priceDisplay: '₹ 240', nameMR: 'पूरण पोळी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Khova Poli', price: 340, priceDisplay: '₹ 340', nameMR: 'खोवा पोळी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ],
-    'NON-VEG (EGG)': [
-        { name: 'अंडा करी', price: 200, priceDisplay: '₹ 200', suggestions: { 20: '8 Kg', 40: '15 Kg', 50: '20 Kg' } },
-        { name: 'अंडा मसाला', price: 250, priceDisplay: '₹ 250', suggestions: { 20: '8 Kg', 40: '15 Kg', 50: '20 Kg' } }
+    'SWEETS (PIECE-BASED)': [
+        { name: 'Gulab Jamun', price: 8, priceDisplay: '₹ 8 / piece', nameMR: 'गुलाब जामून', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } },
+        { name: 'Cham Cham', price: 8, priceDisplay: '₹ 8 / piece', nameMR: 'चम चम', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } },
+        { name: 'Rasgulla', price: 8, priceDisplay: '₹ 8 / piece', nameMR: 'रसगुल्ला', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } }
+    ],
+    'SALADS & CHUTNEYS': [
+        { name: 'Koshimbir', price: 160, priceDisplay: '₹ 160', nameMR: 'कोशिंबीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Green Salad', price: 180, priceDisplay: '₹ 180', nameMR: 'ग्रीन सलाद', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Dal Chutney', price: 120, priceDisplay: '₹ 120', nameMR: 'दाल चटणी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Thecha', price: 310, priceDisplay: '₹ 310', nameMR: 'ठेचा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
+    ],
+    'CHINESE ITEMS': [
+        { name: 'Veg Noodles', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज नूडल्स', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '7 kg' } },
+        { name: 'Veg Manchurian', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज मंचुरियन', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
+        { name: 'Veg Cutlet', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज कटलेट', suggestions: { 20: '2 Kg', 40: '4 kg', 50: '5 kg' } },
+        { name: 'Hara Bhara Kabab', price: 410, priceDisplay: '₹ 410', nameMR: 'हरा भरा कबाब', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Manchurian 65', price: 410, priceDisplay: '₹ 410', nameMR: 'मंचुरियन 65', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Crispy Veg', price: 410, priceDisplay: '₹ 410', nameMR: 'क्रिस्पी व्हेज', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Veg Manchow Soup', price: 310, priceDisplay: '₹ 310', nameMR: 'व्हेज मंचाउ सूप', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Hot & Sour Soup', price: 310, priceDisplay: '₹ 310', nameMR: 'हॉट & साव सूप', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ]
 };
 
-// =============================================
-// DISH NAME TRANSLATIONS (HINDI TO ENGLISH)
-// =============================================
-const dishTranslations = {
-    'तेलाची मोठी पोळी': 'Telachi Mothi Poli',
-    'फुलका रोटी': 'Fulka Roti',
-    'अजवाइन पुरी': 'Ajwain Puri',
-    'ज्वारी भाकर': 'Jwari Bhakar',
-    'साधा राईस': 'Sadha Rice',
-    'जिरा राईस': 'Jira Rice',
-    'गार्लिक राईस': 'Garlic Rice',
-    'व्हेज पुलाव': 'Veg Pulav',
-    'मसाला भात': 'Masala Bhaat',
-    'मूंग दाल खिचडी': 'Moong Dal Khichdi',
-    'तुवर दाल खिचडी': 'Tuvar Dal Khichdi',
-    'साधी दाल': 'Sadhi Dal',
-    'जिरा दाल': 'Jira Dal',
-    'दाल तडका': 'Dal Tadka',
-    'दाल पालक': 'Dal Palak',
-    'गुलाबजामून': 'Gulab Jamun',
-    'चम चम': 'Cham Cham',
-    'रसगुल्ला': 'Rasgulla',
-    'कोशिंबीर': 'Kosimbir',
-    'ग्रीन सलाद': 'Green Salad',
-    'दाल चटणी': 'Dal Chutney',
-    'ठेचा': 'Thecha',
-    'व्हेज नूडल्स': 'Veg Noodles',
-    'व्हेज मंचुरियन': 'Veg Manchurian',
-    'व्हेज कटलेट': 'Veg Cutlet',
-    'मिक्स व्हेज कोल्हापुरी': 'Mix Veg Kolhapuri',
-    'भेंडी मसाला': 'Bhendi Masala',
-    'पनीर बटर मसाला': 'Paneer Butter Masala',
-    'मटर पनीर': 'Matar Paneer',
-    'कढाई पनीर': 'Kadhai Paneer',
-    'पालक पनीर': 'Palak Paneer',
-    'लच्छा पनीर': 'Lachcha Paneer',
-    'पनीर कोल्हापुरी': 'Paneer Kolhapuri',
-    'मटण सावजी': 'Mutton Saoji',
-    'मटण मसाला': 'Mutton Masala',
-    'भूना मटण': 'Bhuna Mutton',
-    'सावजी खूर': 'Saoji Khoor',
-    'खिमा कलेजी': 'Khima Kaleji',
-    'चिकन सावजी': 'Chicken Saoji',
-    'चिकन मसाला': 'Chicken Masala',
-    'बटर चिकन': 'Butter Chicken',
-    'चिकन टिक्का मसाला': 'Chicken Tikka Masala',
-    'अंडा करी': 'Anda Curry',
-    'अंडा मसाला': 'Anda Masala'
+let state = {
+    cart: {},
+    language: 'en',
+    selectedPeople: 20,
+    activeCategory: 'ROTI / BREAD',
+    cartVisible: false
 };
 
-// =============================================
-// CONSTANTS & VARIABLES
-// =============================================
-const WHATSAPP_NUMBER = '919370002119';
-let cart = {};
-let isHinglish = false;
-
-// =============================================
-// HAMBURGER MENU FUNCTIONALITY
-// =============================================
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-const menuOverlay = document.getElementById('menuOverlay');
-const closeMenu = document.getElementById('closeMenu');
-const menuItems = document.querySelectorAll('.menu-item');
-
-// Open hamburger menu
-hamburger.addEventListener('click', () => {
-    hamburger.classList.add('active');
-    mobileMenu.classList.add('active');
-    menuOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-});
-
-// Close hamburger menu function
-function closeMenuHandler() {
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
+function getItemName(item) {
+    return state.language === 'mr' ? item.nameMR : item.name;
 }
 
-// Close menu button
-closeMenu.addEventListener('click', closeMenuHandler);
+function parseQuantity(suggestion) {
+    const match = suggestion.match(/(\d+)/);
+    return match ? parseFloat(match[0]) : 0;
+}
 
-// Close menu when overlay is clicked
-menuOverlay.addEventListener('click', closeMenuHandler);
+function formatPrice(amount) {
+    return amount.toLocaleString('en-IN');
+}
 
-// Close menu when menu item is clicked
-menuItems.forEach(item => {
-    item.addEventListener('click', closeMenuHandler);
-});
+function init() {
+    renderCategoryTabs();
+    renderMenuItems(state.activeCategory);
+    updateLanguageUI();
+    updateCartUI();
+}
 
-// =============================================
-// SCROLL TO CATEGORY FUNCTION
-// =============================================
-function scrollToCategory(categoryName) {
-    closeMenuHandler();
-    setTimeout(() => {
-        const categoryElements = document.querySelectorAll('.section-title');
-        for (let el of categoryElements) {
-            if (el.textContent.trim() === categoryName) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                break;
-            }
+function renderCategoryTabs() {
+    const categoryTabs = document.getElementById('categoryTabs');
+    categoryTabs.innerHTML = '';
+
+    Object.keys(MENU_DATA).forEach(category => {
+        const tab = document.createElement('button');
+        tab.className = `category-tab ${category === state.activeCategory ? 'active' : ''}`;
+        tab.textContent = category;
+        tab.onclick = () => selectCategory(category);
+        categoryTabs.appendChild(tab);
+    });
+}
+
+function renderMenuItems(category) {
+    const menuGrid = document.getElementById('menuGrid');
+    menuGrid.innerHTML = '';
+
+    const items = MENU_DATA[category];
+
+    items.forEach((item, index) => {
+        const cartKey = `${category}|${item.name}`;
+        const cartItem = state.cart[cartKey];
+        const suggestion = item.suggestions[state.selectedPeople];
+
+        const itemEl = document.createElement('div');
+        itemEl.className = 'menu-item';
+
+        const itemNameEl = document.createElement('div');
+        itemNameEl.className = 'item-name';
+        itemNameEl.textContent = getItemName(item);
+
+        const itemPriceEl = document.createElement('div');
+        itemPriceEl.className = 'item-price';
+        itemPriceEl.textContent = item.priceDisplay;
+
+        const recommendationEl = document.createElement('div');
+        recommendationEl.className = 'recommendation';
+        recommendationEl.innerHTML = `<strong>Recommended for ${state.selectedPeople} people:</strong>${suggestion}`;
+
+        itemEl.appendChild(itemNameEl);
+        itemEl.appendChild(itemPriceEl);
+        itemEl.appendChild(recommendationEl);
+
+        if (cartItem) {
+            const controlsEl = document.createElement('div');
+            controlsEl.className = 'quantity-controls';
+
+            const minusBtn = document.createElement('button');
+            minusBtn.className = 'qty-btn qty-minus';
+            minusBtn.textContent = '−';
+            minusBtn.onclick = () => updateQuantity(cartKey, cartItem.quantity - 1);
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.className = 'qty-input';
+            input.value = cartItem.quantity;
+            input.onchange = (e) => updateQuantity(cartKey, parseFloat(e.target.value) || 0);
+
+            const plusBtn = document.createElement('button');
+            plusBtn.className = 'qty-btn qty-plus';
+            plusBtn.textContent = '+';
+            plusBtn.onclick = () => updateQuantity(cartKey, cartItem.quantity + 1);
+
+            controlsEl.appendChild(minusBtn);
+            controlsEl.appendChild(input);
+            controlsEl.appendChild(plusBtn);
+
+            itemEl.appendChild(controlsEl);
+
+            const totalEl = document.createElement('div');
+            totalEl.className = 'qty-total';
+            totalEl.textContent = `₹${formatPrice(item.price * cartItem.quantity)}`;
+            itemEl.appendChild(totalEl);
+        } else {
+            const addBtn = document.createElement('button');
+            addBtn.className = 'add-btn';
+            addBtn.textContent = 'Add to Order';
+            addBtn.onclick = () => addToCart(item, category);
+            itemEl.appendChild(addBtn);
         }
-    }, 300);
+
+        menuGrid.appendChild(itemEl);
+    });
 }
 
-// =============================================
-// LANGUAGE TOGGLE
-// =============================================
+function updateCartUI() {
+    const cartItems = Object.entries(state.cart);
+    const totalItems = cartItems.length;
+    const totalPrice = cartItems.reduce((sum, [_, item]) => sum + (item.price * item.quantity), 0);
+
+    const cartBar = document.getElementById('cartBar');
+    const emptyCart = document.getElementById('emptyCart');
+
+    if (totalItems > 0) {
+        cartBar.classList.add('active');
+        emptyCart.classList.remove('active');
+
+        document.getElementById('cartCount').textContent = `${totalItems} item${totalItems !== 1 ? 's' : ''}`;
+        document.getElementById('cartTotal').textContent = `₹${formatPrice(totalPrice)}`;
+        document.getElementById('whatsappTotal').textContent = `₹${formatPrice(totalPrice)}`;
+
+        const cartSummary = document.getElementById('cartSummary');
+        cartSummary.innerHTML = '';
+
+        cartItems.forEach(([key, item]) => {
+            const cartItemEl = document.createElement('div');
+            cartItemEl.className = 'cart-item';
+
+            const itemInfoEl = document.createElement('div');
+            const itemNameEl = document.createElement('div');
+            itemNameEl.className = 'cart-item-name';
+            itemNameEl.textContent = getItemName(item);
+
+            const itemDetailEl = document.createElement('div');
+            itemDetailEl.className = 'cart-item-detail';
+            itemDetailEl.textContent = `${item.quantity} Kg × ₹${item.price} = ₹${formatPrice(item.price * item.quantity)}`;
+
+            itemInfoEl.appendChild(itemNameEl);
+            itemInfoEl.appendChild(itemDetailEl);
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'cart-item-remove';
+            removeBtn.textContent = 'Remove';
+            removeBtn.onclick = () => removeFromCart(key);
+
+            cartItemEl.appendChild(itemInfoEl);
+            cartItemEl.appendChild(removeBtn);
+            cartSummary.appendChild(cartItemEl);
+        });
+    } else {
+        cartBar.classList.remove('active');
+        emptyCart.classList.add('active');
+    }
+}
+
+function updateLanguageUI() {
+    const langText = state.language === 'en' ? 'mr' : 'en';
+    document.getElementById('langToggle').textContent = translations[langText].langButton;
+    document.getElementById('peopleText').textContent = translations[state.language].peopleText;
+    document.getElementById('badge1').textContent = translations[state.language].badge1;
+    document.getElementById('badge2').textContent = translations[state.language].badge2;
+    document.getElementById('badge3').textContent = translations[state.language].badge3;
+}
+
+function addToCart(item, category) {
+    const suggestion = item.suggestions[state.selectedPeople];
+    const quantity = parseQuantity(suggestion);
+    const key = `${category}|${item.name}`;
+
+    state.cart[key] = {
+        ...item,
+        category,
+        quantity,
+        selectedPeople: state.selectedPeople
+    };
+
+    renderMenuItems(state.activeCategory);
+    updateCartUI();
+}
+
+function updateQuantity(key, newQuantity) {
+    if (newQuantity <= 0) {
+        removeFromCart(key);
+    } else {
+        state.cart[key].quantity = newQuantity;
+        renderMenuItems(state.activeCategory);
+        updateCartUI();
+    }
+}
+
+function removeFromCart(key) {
+    delete state.cart[key];
+    renderMenuItems(state.activeCategory);
+    updateCartUI();
+}
+
+function setPeople(count) {
+    state.selectedPeople = count;
+
+    document.querySelectorAll('.people-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.add('inactive');
+    });
+    event.target.classList.remove('inactive');
+    event.target.classList.add('active');
+
+    renderMenuItems(state.activeCategory);
+    updateCartUI();
+}
+
+function selectCategory(category) {
+    state.activeCategory = category;
+    renderCategoryTabs();
+    renderMenuItems(category);
+}
+
 function toggleLanguage() {
-    isHinglish = !isHinglish;
-    const langBtn = document.getElementById('langToggle');
-    langBtn.textContent = isHinglish ? '🌐 English' : '🌐 मराठी';
-    renderMenu();
-    updateOrderSummary();
+    state.language = state.language === 'en' ? 'mr' : 'en';
+    updateLanguageUI();
+    renderMenuItems(state.activeCategory);
+    updateCartUI();
 }
 
-document.getElementById('langToggle').addEventListener('click', toggleLanguage);
+function toggleMenu() {
+    window.location.href = 'menu.html';
+}
 
-// =============================================
-// GET DISH DISPLAY NAME
-// =============================================
-function getDishName(hindiName) {
-    if (!isHinglish) {
-        return dishTranslations[hindiName] || hindiName;
+function handleCall() {
+    const phoneNumber = '919370002119';
+    window.location.href = `tel:${phoneNumber}`;
+}
+
+function toggleCart() {
+    state.cartVisible = !state.cartVisible;
+    const cartSummary = document.getElementById('cartSummary');
+    const expandBtn = document.getElementById('expandBtn');
+
+    if (state.cartVisible) {
+        cartSummary.classList.add('active');
+        expandBtn.classList.add('expanded');
+    } else {
+        cartSummary.classList.remove('active');
+        expandBtn.classList.remove('expanded');
     }
-    return hindiName;
 }
 
-// =============================================
-// RENDER MENU
-// =============================================
-function renderMenu() {
-    const section = document.getElementById('menuSection');
-    let html = '';
+function generateWhatsAppMessage() {
+    const cartItems = Object.entries(state.cart);
 
-    Object.keys(categories).forEach(cat => {
-        const items = categories[cat];
-        if (!items || items.length === 0) return;
-
-        html += `
-            <div class="category-section">
-                <div class="section-title">${cat}</div>
-                <table class="menu-table">
-                    <thead>
-                        <tr>
-                            <th>Menu</th>
-                            <th>1 Kg Price</th>
-                            <th colspan="3" style="text-align: center;">Suggestions</th>
-                            <th>Qty</th>
-                        </tr>
-                        <tr>
-                            <th colspan="2"></th>
-                            <th class="suggestion-cell">20 People</th>
-                            <th class="suggestion-cell">40 People</th>
-                            <th class="suggestion-cell">50 People</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-        `;
-
-        items.forEach(item => {
-            const currentQty = cart[item.name]?.quantity || 0;
-            const displayName = getDishName(item.name);
-            html += `
-                <tr>
-                    <td class="item-name">${displayName}</td>
-                    <td class="item-price">${item.priceDisplay}</td>
-                    <td class="suggestion-cell">${item.suggestions[20]}</td>
-                    <td class="suggestion-cell">${item.suggestions[40]}</td>
-                    <td class="suggestion-cell">${item.suggestions[50]}</td>
-                    <td>
-                        <div class="qty-controls">
-                            <button class="qty-btn" onclick="decrementItem('${item.name.replace(/'/g, "\\'")}')">−</button>
-                            <div class="qty-display" id="qty-${item.name}">${currentQty}</div>
-                            <button class="qty-btn" onclick="incrementItem('${item.name.replace(/'/g, "\\'")}')">+</button>
-                        </div>
-                    </td>
-                </tr>
-            `;
-        });
-
-        html += `</tbody></table></div>`;
-    });
-
-    section.innerHTML = html;
-}
-
-// =============================================
-// INCREMENT ITEM
-// =============================================
-function incrementItem(name) {
-    if (!cart[name]) {
-        let item = null;
-        for (let cat in categories) {
-            const found = categories[cat].find(i => i.name === name);
-            if (found) {
-                item = found;
-                break;
-            }
-        }
-        if (!item) return;
-        cart[name] = { ...item, quantity: 0 };
+    if (cartItems.length === 0) {
+        return '';
     }
-    cart[name].quantity++;
-    updateUI();
-}
 
-// =============================================
-// DECREMENT ITEM
-// =============================================
-function decrementItem(name) {
-    if (cart[name]) {
-        cart[name].quantity--;
-        if (cart[name].quantity <= 0) delete cart[name];
-    }
-    updateUI();
-}
-
-// =============================================
-// UPDATE UI
-// =============================================
-function updateUI() {
-    for (let cat in categories) {
-        categories[cat].forEach(item => {
-            const qty = cart[item.name]?.quantity || 0;
-            const el = document.getElementById(`qty-${item.name}`);
-            if (el) el.textContent = qty;
-        });
-    }
-    updateOrderSummary();
-}
-
-// =============================================
-// UPDATE ORDER SUMMARY
-// =============================================
-function updateOrderSummary() {
-    const items = Object.values(cart).filter(i => i.quantity > 0);
-    const orderItems = document.getElementById('orderItems');
-    const orderTotal = document.getElementById('orderTotal');
-    const whatsappBtn = document.getElementById('whatsappBtn');
-    const clearBtn = document.getElementById('clearBtn');
+    let message = 'Raj Kitchen Order\n\n';
     let total = 0;
 
-    if (items.length === 0) {
-        orderItems.innerHTML = `
-            <div class="order-empty">
-                <div class="order-empty-icon">🛒</div>
-                <p>No items added</p>
-            </div>
-        `;
-        whatsappBtn.disabled = true;
-        clearBtn.style.display = 'none';
-        orderTotal.textContent = '₹0';
+    cartItems.forEach(([_, item]) => {
+        const displayName = getItemName(item);
+        const unit = item.suggestions[20].includes('Pcs') ? 'Pcs' : 'Kg';
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        message += `• ${displayName}\n  ${item.quantity} ${unit} × ₹${item.price} = ₹${itemTotal}\n\n`;
+    });
+
+    message += `Total: ₹${total}\n\n`;
+    message += 'Please confirm availability and delivery.';
+
+    return message;
+}
+
+function handleWhatsAppOrder() {
+    const cartItems = Object.entries(state.cart);
+
+    if (cartItems.length === 0) {
+        alert('Please add items to your order');
         return;
     }
 
-    let html = '';
-    items.forEach(item => {
-        const subtotal = item.price * item.quantity;
-        total += subtotal;
-        const displayName = getDishName(item.name);
-        html += `
-            <div class="order-item">
-                <div class="order-item-name">${displayName}</div>
-                <div style="display: flex; gap: 8px; align-items: center;">
-                    <div class="order-item-qty">${item.quantity} kg</div>
-                    <div class="order-item-price">₹${subtotal}</div>
-                </div>
-            </div>
-        `;
-    });
+    const message = generateWhatsAppMessage();
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
-    orderItems.innerHTML = html;
-    orderTotal.textContent = `₹${total}`;
-    whatsappBtn.disabled = false;
-    clearBtn.style.display = 'block';
+    window.open(whatsappURL, '_blank');
 }
 
-// =============================================
-// SEND WHATSAPP ORDER
-// =============================================
-function sendWhatsappOrder() {
-    const items = Object.values(cart).filter(i => i.quantity > 0);
-    if (items.length === 0) {
-        alert('Please add items');
-        return;
-    }
-
-    let msg = '🍽️ *Raj Kitchen Order*\n\n';
-    let total = 0;
-
-    items.forEach(item => {
-        const subtotal = item.price * item.quantity;
-        total += subtotal;
-        msg += `• ${item.name}\n   ${item.quantity} kg × ₹${item.price} = ₹${subtotal}\n\n`;
-    });
-
-    msg += `\n*Total: ₹${total}*\n\nPlease confirm availability and delivery.`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-// =============================================
-// EVENT LISTENERS
-// =============================================
-document.getElementById('whatsappBtn').addEventListener('click', sendWhatsappOrder);
-
-document.getElementById('clearBtn').addEventListener('click', () => {
-    cart = {};
-    updateUI();
-});
-
-// =============================================
-// INITIALIZE
-// =============================================
-document.addEventListener('DOMContentLoaded', renderMenu);
+document.addEventListener('DOMContentLoaded', init);
