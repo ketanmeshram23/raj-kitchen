@@ -67,13 +67,15 @@ const MENU_DATA = {
         { name: 'Telachi Mothi Poli', price: 150, priceDisplay: '₹ 150', nameMR: 'तेलाची मोठी पोळी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Fulka Roti', price: 160, priceDisplay: '₹ 160', nameMR: 'फुलका रोटी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Ajwain Puri', price: 180, priceDisplay: '₹ 180', nameMR: 'अजवाइन पुरी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Jowar Bhakri', price: 190, priceDisplay: '₹ 190', nameMR: 'ज्वारी भाकर', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } }
+        { name: 'Jawari Bhakri', price: 190, priceDisplay: '₹ 190', nameMR: 'ज्वारी भाकर', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } }
     ],
     'RICE': [
         { name: 'Sadha Rice', price: 110, priceDisplay: '₹ 110', nameMR: 'साधा राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Jeera Rice', price: 120, priceDisplay: '₹ 120', nameMR: 'जिरा राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Garlic Rice', price: 130, priceDisplay: '₹ 130', nameMR: 'गार्लिक राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Veg Pulav', price: 160, priceDisplay: '₹ 160', nameMR: 'व्हेज पुलाव', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
+        { name: 'Tawa Pulav', price: 160, priceDisplay: '₹ 160', nameMR: 'तवा पुलाव', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
+        { name: 'Veg Biryani', price: 160, priceDisplay: '₹ 160', nameMR: ' व्हेज बिर्याणी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Masala Bhat', price: 170, priceDisplay: '₹ 170', nameMR: 'मसाला भात', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Moong Dal Khichdi', price: 160, priceDisplay: '₹ 160', nameMR: 'मूंग दाल खिचडी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Toor Dal Khichdi', price: 180, priceDisplay: '₹ 180', nameMR: 'तुवर दाल खिचडी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } }
