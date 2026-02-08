@@ -56,6 +56,13 @@ function formatPriceDisplay(priceDisplay) {
 }
 
 const MENU_DATA = {
+    'STARTERS': [
+        { name: 'Hara Bhara Kabab', price: 410, priceDisplay: '₹ 410', nameMR: 'हरा भरा कबाब', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' }, isStarter: true },
+        { name: 'Manchurian 65', price: 410, priceDisplay: '₹ 410', nameMR: 'मंचुरियन 65', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' }, isStarter: true },
+        { name: 'Crispy Veg', price: 410, priceDisplay: '₹ 410', nameMR: 'क्रिस्पी व्हेज', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' }, isStarter: true },
+        { name: 'Veg Manchow Soup', price: 310, priceDisplay: '₹ 310', nameMR: 'व्हेज मंचाउ सूप', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' }, isStarter: true },
+        { name: 'Hot & Sour Soup', price: 310, priceDisplay: '₹ 310', nameMR: 'हॉट & साव सूप', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' }, isStarter: true }
+    ],
     'ROTI / BREAD': [
         { name: 'Telachi Mothi Poli', price: 150, priceDisplay: '₹ 150', nameMR: 'तेलाची मोठी पोळी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Fulka Roti', price: 160, priceDisplay: '₹ 160', nameMR: 'फुलका रोटी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
@@ -63,7 +70,7 @@ const MENU_DATA = {
         { name: 'Jowar Bhakri', price: 190, priceDisplay: '₹ 190', nameMR: 'ज्वारी भाकर', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } }
     ],
     'RICE': [
-        { name: 'Sada Rice', price: 110, priceDisplay: '₹ 110', nameMR: 'साधा राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
+        { name: 'Sadha Rice', price: 110, priceDisplay: '₹ 110', nameMR: 'साधा राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Jeera Rice', price: 120, priceDisplay: '₹ 120', nameMR: 'जिरा राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Garlic Rice', price: 130, priceDisplay: '₹ 130', nameMR: 'गार्लिक राईस', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
         { name: 'Veg Pulav', price: 160, priceDisplay: '₹ 160', nameMR: 'व्हेज पुलाव', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } },
@@ -72,7 +79,7 @@ const MENU_DATA = {
         { name: 'Toor Dal Khichdi', price: 180, priceDisplay: '₹ 180', nameMR: 'तुवर दाल खिचडी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '7 kg' } }
     ],
     'DAL': [
-        { name: 'Sadi Dal', price: 160, priceDisplay: '₹ 160', nameMR: 'साधी दाल', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Sadhi Dal', price: 160, priceDisplay: '₹ 160', nameMR: 'साधी दाल', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Jeera Dal', price: 160, priceDisplay: '₹ 160', nameMR: 'जिरा दाल', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Dal Tadka', price: 160, priceDisplay: '₹ 160', nameMR: 'दाल तडका', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Dal Palak', price: 170, priceDisplay: '₹ 170', nameMR: 'दाल पालक', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
@@ -103,16 +110,16 @@ const MENU_DATA = {
         { name: 'Matar Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'मटर पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Kadhai Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'कढाई पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Palak Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'पालक पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Lacha Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'लच्छा पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Lachha Paneer', price: 330, priceDisplay: '₹ 330', nameMR: 'लच्छा पनीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Paneer Kolhapuri', price: 400, priceDisplay: '₹ 400', nameMR: 'पनीर कोल्हापुरी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ],
     'NON-VEG SABJI': [
-        { name: 'Mutton Sawji', price: 650, priceDisplay: '₹ 650', nameMR: 'मटण सावजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Mutton Saoji', price: 650, priceDisplay: '₹ 650', nameMR: 'मटण सावजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Mutton Masala', price: 700, priceDisplay: '₹ 700', nameMR: 'मटण मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Bhuna Mutton', price: 700, priceDisplay: '₹ 700', nameMR: 'भूना मटण', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Sawji Khur', price: 1000, priceDisplay: '₹ 1000', nameMR: 'सावजी खूर', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Kheema Kaleji', price: 700, priceDisplay: '₹ 700', nameMR: 'खीमा कलेजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
-        { name: 'Chicken Sawji', price: 450, priceDisplay: '₹ 450', nameMR: 'चिकन सावजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
+        { name: 'Chicken Saoji', price: 450, priceDisplay: '₹ 450', nameMR: 'चिकन सावजी', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Chicken Masala', price: 500, priceDisplay: '₹ 500', nameMR: 'चिकन मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Butter Chicken', price: 500, priceDisplay: '₹ 500', nameMR: 'बटर चिकन', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
         { name: 'Chicken Tikka Masala', price: 500, priceDisplay: '₹ 500', nameMR: 'चिकन टिक्का मसाला', suggestions: { 20: '8 Kg', 40: '15 kg', 50: '20 kg' } },
@@ -129,6 +136,11 @@ const MENU_DATA = {
         { name: 'Sambar Vadi', price: 300, priceDisplay: '₹ 300', nameMR: 'संभार वडी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Fryums Papad', price: 170, priceDisplay: '₹ 170', nameMR: 'फ्राईम्स पापड', suggestions: { 20: '1 Kg', 40: '2 kg', 50: '4 kg' } }
     ],
+    'CURD': [ 
+        { name: 'Maharashtrian Kadhi', price: 160, priceDisplay: '₹ 160', nameMR: 'महाराष्ट्रीयन कढी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
+        { name: 'Mattha', price: 130, priceDisplay: '₹ 130', nameMR: 'मठ्ठा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Boondi Raita', price: 160, priceDisplay: '₹ 160', nameMR: 'बूंदी रायता', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } }
+    ],
     'SWEETS': [
         { name: 'Gulab Jamun', price: 8, priceDisplay: '₹ 8 / piece', nameMR: 'गुलाब जामून', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } },
         { name: 'Cham Cham', price: 8, priceDisplay: '₹ 8 / piece', nameMR: 'चम चम', suggestions: { 20: '20 Pcs', 40: '40 Pcs', 50: '50 Pcs' } },
@@ -141,11 +153,6 @@ const MENU_DATA = {
         { name: 'Puran Poli', price: 240, priceDisplay: '₹ 240', nameMR: 'पूरण पोळी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Khova Poli', price: 340, priceDisplay: '₹ 340', nameMR: 'खोवा पोळी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
     ],
-    'CURD': [ 
-        { name: 'Maharashtrian Kadhi', price: 160, priceDisplay: '₹ 160', nameMR: 'महाराष्ट्रीयन कढी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
-        { name: 'Mattha', price: 130, priceDisplay: '₹ 130', nameMR: 'मठ्ठा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Boondi Raita', price: 160, priceDisplay: '₹ 160', nameMR: 'बूंदी रायता', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } }
-    ],
     'SALADS & CHUTNEYS': [
         { name: 'Koshimbir', price: 160, priceDisplay: '₹ 160', nameMR: 'कोशिंबीर', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Green Salad', price: 180, priceDisplay: '₹ 180', nameMR: 'ग्रीन सलाद', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
@@ -155,16 +162,12 @@ const MENU_DATA = {
     'CHINESE': [
         { name: 'Veg Noodles', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज नूडल्स', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '7 kg' } },
         { name: 'Veg Manchurian', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज मंचुरियन', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
-        { name: 'Veg Cutlet', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज कटलेट', suggestions: { 20: '2 Kg', 40: '4 kg', 50: '5 kg' } },
-        { name: 'Hara Bhara Kabab', price: 410, priceDisplay: '₹ 410', nameMR: 'हरा भरा कबाब', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Manchurian 65', price: 410, priceDisplay: '₹ 410', nameMR: 'मंचुरियन 65', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Crispy Veg', price: 410, priceDisplay: '₹ 410', nameMR: 'क्रिस्पी व्हेज', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Veg Manchow Soup', price: 310, priceDisplay: '₹ 310', nameMR: 'व्हेज मंचाउ सूप', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Hot & Sour Soup', price: 310, priceDisplay: '₹ 310', nameMR: 'हॉट & साव सूप', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } }
+        { name: 'Veg Cutlet', price: 260, priceDisplay: '₹ 260', nameMR: 'व्हेज कटलेट', suggestions: { 20: '2 Kg', 40: '4 kg', 50: '5 kg' } }
     ]
 };
 
 const CATEGORY_NAMES = {
+    'STARTERS': 'स्टार्टर्स',
     'ROTI / BREAD': 'रोटी / ब्रेड',
     'RICE': 'भात',
     'DAL': 'डाळ',
@@ -172,8 +175,8 @@ const CATEGORY_NAMES = {
     'PANEER SPECIAL': 'पनीर स्पेशल',
     'NON-VEG SABJI': 'नॉन-वेज सब्जी',
     'SNACKS': 'नाश्ता',
-    'SWEETS': 'मिठाई',
     'CURD': 'दही',
+    'SWEETS': 'मिठाई',
     'SALADS & CHUTNEYS': 'सलाद & चटणी',
     'CHINESE': 'चायनीज'
 };
@@ -182,7 +185,7 @@ let state = {
     cart: {},
     language: 'en',
     selectedPeople: 20,
-    activeCategory: 'ROTI / BREAD',
+    activeCategory: 'STARTERS',
     cartVisible: false
 };
 
@@ -263,6 +266,7 @@ function renderMenuItems(category) {
     menuGrid.innerHTML = '';
 
     const items = MENU_DATA[category];
+    const isStarter = category === 'STARTERS';
 
     items.forEach((item) => {
         const cartKey = `${category}|${item.name}`;
@@ -280,13 +284,16 @@ function renderMenuItems(category) {
         itemPriceEl.className = 'item-price';
         itemPriceEl.textContent = formatPriceDisplay(item.priceDisplay);
 
-        const recommendationEl = document.createElement('div');
-        recommendationEl.className = 'recommendation';
-        recommendationEl.innerHTML = `<strong>${getTrans('recommendedFor')} ${state.selectedPeople} ${getTrans('people')}</strong>${suggestion}`;
-
         itemEl.appendChild(itemNameEl);
         itemEl.appendChild(itemPriceEl);
-        itemEl.appendChild(recommendationEl);
+
+        // Only show recommendation for non-starters
+        if (!isStarter) {
+            const recommendationEl = document.createElement('div');
+            recommendationEl.className = 'recommendation';
+            recommendationEl.innerHTML = `<strong>${getTrans('recommendedFor')} ${state.selectedPeople} ${getTrans('people')}</strong>${suggestion}`;
+            itemEl.appendChild(recommendationEl);
+        }
 
         if (cartItem) {
             const controlsEl = document.createElement('div');
@@ -440,8 +447,6 @@ function toggleLanguage() {
 }
 
 function toggleMenu() {
-    // This can navigate to a menu page or show a sidebar menu
-    // For now, it reloads the current page or you can change the URL
     window.location.href = 'menu.html';
 }
 
