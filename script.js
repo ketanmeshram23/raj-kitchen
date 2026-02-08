@@ -139,12 +139,12 @@ const MENU_DATA = {
         { name: 'Mirchi Bhaje', price: 180, priceDisplay: '₹ 180', nameMR: 'मिरची भाजे', suggestions: { 20: '1 Kg', 40: '3 kg', 50: '4 kg' } },
         { name: 'Dahi Vada', price: 230, priceDisplay: '₹ 230', nameMR: 'दही वडा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Aloo Bonda', price: 260, priceDisplay: '₹ 260', nameMR: 'आलू बोंडा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
-        { name: 'Cutlet', price: 270, priceDisplay: '₹ 270', nameMR: 'कटलेट', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
+        { name: 'Veg Cutlet', price: 270, priceDisplay: '₹ 270', nameMR: 'कटलेट', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Sambar Vadi', price: 300, priceDisplay: '₹ 300', nameMR: 'संभार वडी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Fryums Papad', price: 170, priceDisplay: '₹ 170', nameMR: 'फ्राईम्स पापड', suggestions: { 20: '1 Kg', 40: '2 kg', 50: '4 kg' } }
     ],
     'CURD': [ 
-        { name: 'Maharashtrian Kadhi', price: 110, priceDisplay: '₹ 110', nameMR: 'महाराष्ट्रीयन कढी', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } },
+        { name: 'Maharashtrian Kadhi', price: 110, priceDisplay: '₹ 110', nameMR: 'महाराष्ट्रीयन कढी', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Mattha', price: 130, priceDisplay: '₹ 130', nameMR: 'मठ्ठा', suggestions: { 20: '3 Kg', 40: '5 kg', 50: '6 kg' } },
         { name: 'Boondi Raita', price: 160, priceDisplay: '₹ 160', nameMR: 'बूंदी रायता', suggestions: { 20: '4 Kg', 40: '6 kg', 50: '8 kg' } }
     ],
