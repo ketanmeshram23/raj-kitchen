@@ -21,6 +21,8 @@ const translations = {
         confirmAvailability: 'Please confirm availability and delivery.',
         total: 'Total',
         langButton: 'मराठी',
+        taglineMain: '"The aroma you love, just one Whatsapp away.',
+        taglineSubtitle: 'These are estimates. You can increase or decrease any item as you like.',
     },
     mr: {
         peopleText: 'तुम किती लोकांसाठी अन्न सिद्ध करत आहात?',
@@ -42,6 +44,8 @@ const translations = {
         confirmAvailability: 'कृपया उपलब्धता आणि वितरण खरोखर करा.',
         total: 'एकूण',
         langButton: 'English',
+        taglineMain: 'तुमची आवडती चव, आता फक्त एक WhatsApp लांब!',
+        taglineSubtitle: 'दिलेली नगसंख्या अंदाजित आहे. आपल्या सोयीनुसार आपण यामध्ये बदल करू शकता.',
     }
 };
 
@@ -189,7 +193,9 @@ let state = {
     language: 'en',
     selectedPeople: 20,
     activeCategory: 'STARTERS',
-    cartVisible: false
+    cartVisible: false,
+    lastScrollTop: 0,
+    taglineVisible: true
 };
 
 function getTrans(key) {
@@ -219,6 +225,10 @@ function updateAllHTMLText() {
     document.getElementById('peopleText').textContent = getTrans('peopleText');
     document.getElementById('emptyCart').textContent = getTrans('emptyCart');
     
+    // Update tagline text
+    document.getElementById('taglineText').textContent = getTrans('taglineMain');
+    document.getElementById('taglineSubtitle').textContent = getTrans('taglineSubtitle');
+    
     // Update people buttons
     const peopleBtns = document.querySelectorAll('.people-btn');
     peopleBtns[0].textContent = getTrans('people20');
@@ -244,11 +254,57 @@ function updateAllHTMLText() {
     }
 }
 
+// Scroll detection for tagline
+function initScrollListener() {
+    let scrollTimeout;
+    
+    window.addEventListener('scroll', function() {
+        const scrollTagline = document.getElementById('scrollTagline');
+        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Check if scrolling down or up
+        if (currentScrollTop > state.lastScrollTop && currentScrollTop > 100) {
+            // Scrolling down - hide tagline
+            if (state.taglineVisible) {
+                scrollTagline.classList.remove('visible');
+                scrollTagline.classList.add('hidden');
+                state.taglineVisible = false;
+            }
+        } else {
+            // Scrolling up - show tagline
+            if (!state.taglineVisible) {
+                scrollTagline.classList.remove('hidden');
+                scrollTagline.classList.add('visible');
+                state.taglineVisible = true;
+            }
+        }
+        
+        state.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+        
+        // Clear previous timeout
+        clearTimeout(scrollTimeout);
+        
+        // Reset visibility if scroll stops near top
+        if (currentScrollTop < 50) {
+            scrollTagline.classList.remove('hidden');
+            scrollTagline.classList.add('visible');
+            state.taglineVisible = true;
+        }
+    }, false);
+}
+
 function init() {
     updateAllHTMLText();
     renderCategoryTabs();
     renderMenuItems(state.activeCategory);
     updateCartUI();
+    
+    // Initialize scroll listener only on mobile
+    if (window.innerWidth <= 768) {
+        initScrollListener();
+        const scrollTagline = document.getElementById('scrollTagline');
+        scrollTagline.classList.add('visible');
+    }
 }
 
 function renderCategoryTabs() {
